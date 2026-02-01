@@ -39,7 +39,7 @@ header {
 
 nav {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -47,16 +47,46 @@ nav a {
   text-decoration: none;
   color: #666;
   font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.donate-btn {
-  background: #E2F6FF;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
+nav a:hover {
+  color: #333;
+}
+
+/* --- UNIVERSAL HIGH-CONTRAST BUTTONS --- */
+.donate-btn, 
+.mission-buttons a, 
+.feedback-btn {
+  display: inline-block;
+  background-color: #A7EFF1; /* Stronger brand blue for background */
+  color: #ffffff !important;   /* Pure white text for readability */
+  padding: 0.7rem 1.8rem;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;           /* Bold text for clarity */
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Header specific button size */
+header .donate-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.8rem;
+}
+
+/* Global Button Hover */
+.donate-btn:hover, 
+.mission-buttons a:hover, 
+.feedback-btn:hover {
+  background-color: #5A6D65;   /* Dark sage for high contrast on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(167, 239, 241, 0.4);
 }
 
 /* HERO SECTION */
@@ -93,57 +123,115 @@ nav a {
   margin-bottom: 1.5rem;
 }
 
-/* BUTTONS */
 .mission-buttons {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-.mission-buttons a {
-  padding: 0.6rem 1.2rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
+/* FEEDBACK SECTION */
+.feedback-section {
+  padding: 5rem 2rem;
+  background-color: #ffffff;
+}
+
+.feedback-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  background: #fdfdfd;
+  padding: 3rem;
+  border-radius: 2rem;
+  border: 1px solid #f0f0f0;
+}
+
+.feedback-content {
+  flex: 1;
+}
+
+.feedback-content h2 {
+  color: #5A6D65;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-content p {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.feedback-image {
+  flex: 0 0 150px;
+  height: 150px;
   background: #E2F6FF;
-  color: #ffffff;
-  remember: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #A7EFF1;
 }
 
-/* TABLETS (iPads, smaller laptops) */
-@media (max-width: 1024px) {
-  .hero {
-    align-items: center;
-  }
+/* TOOLTIP STYLES */
+.tooltip-btn {
+  position: relative;
+  display: inline-block;
 }
 
-/* PHONES */
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .hero {
-    padding: 1.5rem;
-    min-height: 80vh;
-  }
-
-  .mission-card {
-    padding: 1.5rem;
-  }
+.tooltip-btn::after {
+  content: attr(data-desc);
+  position: absolute;
+  top: 135%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background-color: #ffffff;
+  color: #5A6D65;
+  border: 1px solid #A7EFF1;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(167, 239, 241, 0.3);
 }
+
+.tooltip-btn::before {
+  content: "";
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent #A7EFF1 transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.tooltip-btn:hover::after,
+.tooltip-btn:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-btn:hover::after {
+  transform: translateX(-50%) translateY(0);
+}
+
 /* FOOTER STYLES */
 .main-footer {
-  background-color: #BDC8C1; /* The sage green color from your image */
+  background-color: #BDC8C1;
   padding: 3rem 2rem;
-  color: #5A6D65; /* Darker sage for text */
+  color: #5A6D65;
   font-size: 0.9rem;
 }
 
@@ -178,10 +266,12 @@ nav a {
 .footer-column ul li a {
   text-decoration: none;
   color: inherit;
+  transition: all 0.3s ease;
 }
 
-.footer-column ul li span {
-  font-size: 0.85rem;
+.footer-column ul li a:hover {
+  color: #3e4b45;
+  text-decoration: underline;
 }
 
 /* SOCIAL ICONS */
@@ -199,11 +289,12 @@ nav a {
   justify-content: center;
   color: #fff;
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  opacity: 0.8;
+  filter: brightness(80%);
+  transform: translateY(-2px);
 }
 
 .fb { background-color: #1877F2; }
@@ -212,132 +303,47 @@ nav a {
 .tk { background-color: #000000; }
 .ig { background-color: #E4405F; }
 
-/* Responsive Footer adjustment for Mobile */
+/* RESPONSIVE QUERIES */
+@media (max-width: 1024px) {
+  .hero {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .feedback-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .feedback-image {
+    order: -1;
+  }
+}
+
 @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .hero {
+    padding: 1.5rem;
+    min-height: 80vh;
+  }
+
+  .mission-card {
+    padding: 1.5rem;
+  }
+
   .footer-container {
     flex-direction: column;
   }
-}
-/* TOOLTIP UNDER BUTTONS */
-.tooltip-btn {
-  position: relative;
-  display: inline-block;
-}
-
-/* The Description Box */
-.tooltip-btn::after {
-  content: attr(data-desc);
-  position: absolute;
-  top: 135%; /* Positioned below the button */
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px); /* Starts slightly higher for animation */
-  
-  /* Matching Website Style */
-  background-color: #ffffff; /* White background for clean look */
-  color: #5A6D65;            /* Dark Sage text from your footer */
-  border: 1px solid #A7EFF1; /* Light blue border from your logo/headings */
-  
-  padding: 8px 12px;
-  border-radius: 12px;       /* Matching your mission-card roundness */
-  font-size: 0.75rem;
-  font-weight: 500;
-  white-space: nowrap;
-  
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(167, 239, 241, 0.3); /* Subtle blue glow */
-}
-
-/* The Little Triangle Arrow (pointing up) */
-.tooltip-btn::before {
-  content: "";
-  position: absolute;
-  top: 115%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent #A7EFF1 transparent; /* Blue arrow */
-  
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-/* Hover State - Slide down and Fade in */
-.tooltip-btn:hover::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-.tooltip-btn:hover::before {
-  opacity: 1;
-  visibility: visible;
-}
-/* --- UNIVERSAL HOVER EFFECTS --- */
-
-/* Navigation Links - turn darker gray */
-nav a:hover {
-  color: #333; /* Darker than the original #666 */
-  transition: color 0.3s ease;
-}
-
-/* Donate Button (Header) - darken the light blue */
-.donate-btn:hover {
-  background-color: #c5e9f9; /* Slightly darker than #E2F6FF */
-  transition: background-color 0.3s ease;
-}
-
-/* Mission Buttons - darken on hover */
-.mission-buttons a:hover {
-  filter: brightness(90%); /* Automatically darkens the current color */
-  transition: filter 0.3s ease;
-}
-
-/* Footer Links - darken on hover */
-.footer-column ul li a:hover {
-  color: #3e4b45; /* Darker than the original #5A6D65 */
-  text-decoration: underline;
-}
-
-/* Social Icons - darken the brand colors */
-.social-icons a:hover {
-  filter: brightness(80%);
-  transform: translateY(-2px); /* Subtle lift effect */
-  transition: all 0.3s ease;
-}
-
-/* --- TOOLTIP STYLE ADJUSTMENTS --- */
-/* (Keeping your requested style from the previous step) */
-
-.tooltip-btn::after {
-  content: attr(data-desc);
-  position: absolute;
-  top: 135%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  background-color: #ffffff;
-  color: #5A6D65; /* Matches footer text color */
-  border: 1px solid #A7EFF1; /* Matches logo/heading color */
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(167, 239, 241, 0.3);
-}
-
-.tooltip-btn:hover::after {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
 }
