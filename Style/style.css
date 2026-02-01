@@ -7,12 +7,13 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   color: #333;
   line-height: 1.6;
 }
@@ -31,10 +32,11 @@ header {
 }
 
 .logo {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 600;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 800;
   color: #A7EFF1;
   white-space: nowrap;
+  letter-spacing: 1px;
 }
 
 nav {
@@ -48,25 +50,27 @@ nav a {
   color: #666;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.3s ease;
+  display: inline-block; /* Allows transform to work */
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
   color: #333;
+  transform: translateY(-4px); /* Glides up on hover */
 }
 
-/* --- UNIVERSAL HIGH-CONTRAST BUTTONS --- */
+/* --- UNIVERSAL BUTTONS --- */
 .donate-btn, 
 .mission-buttons a, 
 .feedback-btn {
   display: inline-block;
-  background-color: #A7EFF1; /* Stronger brand blue for background */
-  color: #ffffff !important;   /* Pure white text for readability */
+  background-color: #A7EFF1; 
+  color: #ffffff !important;   
   padding: 0.7rem 1.8rem;
   border-radius: 999px;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 700;           /* Bold text for clarity */
+  font-weight: 700;           
   letter-spacing: 0.5px;
   border: none;
   cursor: pointer;
@@ -74,17 +78,10 @@ nav a:hover {
   transition: all 0.3s ease;
 }
 
-/* Header specific button size */
-header .donate-btn {
-  padding: 0.5rem 1.5rem;
-  font-size: 0.8rem;
-}
-
-/* Global Button Hover */
 .donate-btn:hover, 
 .mission-buttons a:hover, 
 .feedback-btn:hover {
-  background-color: #5A6D65;   /* Dark sage for high contrast on hover */
+  background-color: #5A6D65;   
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(167, 239, 241, 0.4);
 }
@@ -101,7 +98,6 @@ header .donate-btn {
   background-position: center;
 }
 
-/* MISSION CARD */
 .mission-card {
   background: #ffffff;
   width: 100%;
@@ -129,9 +125,74 @@ header .donate-btn {
   flex-wrap: wrap;
 }
 
+/* --- PROGRAMS SECTION (CLEAN GREY) --- */
+.programs-section {
+  padding: 6rem 2rem;
+  background-color: #f9f9f9; 
+  display: flex;
+  justify-content: center;
+}
+
+.programs-container {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.programs-image img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.programs-content h2 {
+  font-size: 2.8rem;
+  color: #5A6D65;
+  margin-bottom: 1rem;
+}
+
+.programs-content > p {
+    color: #777;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.program-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.program-item i {
+  font-size: 1.8rem;
+  color: #A7EFF1;
+  margin-top: 0.3rem;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+
+.program-text h3 {
+  color: #333;
+  margin-bottom: 0.4rem;
+  font-size: 1.25rem;
+}
+
+.program-text p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
 /* FEEDBACK SECTION */
 .feedback-section {
-  padding: 5rem 2rem;
+  padding: 6rem 2rem;
   background-color: #ffffff;
 }
 
@@ -147,26 +208,13 @@ header .donate-btn {
   border: 1px solid #f0f0f0;
 }
 
-.feedback-content {
-  flex: 1;
-}
-
-.feedback-content h2 {
-  color: #5A6D65;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.feedback-content p {
-  color: #666;
-  margin-bottom: 2rem;
-  font-size: 1.05rem;
-}
+.feedback-content h2 { color: #5A6D65; font-size: 2.2rem; margin-bottom: 1rem; }
+.feedback-content p { color: #666; margin-bottom: 2rem; font-size: 1.1rem; }
 
 .feedback-image {
-  flex: 0 0 150px;
-  height: 150px;
-  background: #E2F6FF;
+  flex: 0 0 160px;
+  height: 160px;
+  background: #f0fbfc;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -175,64 +223,63 @@ header .donate-btn {
   color: #A7EFF1;
 }
 
-/* TOOLTIP STYLES */
-.tooltip-btn {
-  position: relative;
-  display: inline-block;
+/* --- TEAM PAGE STYLES --- */
+.team-main {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
 }
 
-.tooltip-btn::after {
-  content: attr(data-desc);
-  position: absolute;
-  top: 135%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  background-color: #ffffff;
-  color: #5A6D65;
-  border: 1px solid #A7EFF1;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(167, 239, 241, 0.3);
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
 }
 
-.tooltip-btn::before {
-  content: "";
-  position: absolute;
-  top: 115%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent #A7EFF1 transparent;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
+.team-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  min-width: 280px;
+  flex: 1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
-.tooltip-btn:hover::after,
-.tooltip-btn:hover::before {
-  opacity: 1;
-  visibility: visible;
+.team-card.featured {
+  border: 2px solid #A7EFF1;
 }
 
-.tooltip-btn:hover::after {
-  transform: translateX(-50%) translateY(0);
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
-/* FOOTER STYLES */
+.team-role {
+    color: #A7EFF1;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+/* FOOTER */
 .main-footer {
   background-color: #BDC8C1;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   color: #5A6D65;
-  font-size: 0.9rem;
 }
 
 .footer-container {
@@ -241,109 +288,67 @@ header .donate-btn {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 3rem;
 }
 
-.footer-column {
-  flex: 1;
-  min-width: 200px;
-}
+.footer-column h3 { margin-bottom: 1.5rem; font-size: 1.2rem; color: #4a5852; }
+.footer-column ul { list-style: none; }
+.footer-column ul li { margin-bottom: 0.8rem; }
+.footer-column ul li a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-.footer-column h3 {
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  color: #5A6D65;
-}
-
-.footer-column ul {
-  list-style: none;
-}
-
-.footer-column ul li {
-  margin-bottom: 1rem;
-}
-
-.footer-column ul li a {
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-}
-
-.footer-column ul li a:hover {
-  color: #3e4b45;
-  text-decoration: underline;
-}
-
-/* SOCIAL ICONS */
-.social-icons {
-  display: flex;
-  gap: 10px;
-}
-
+.social-icons { display: flex; gap: 12px; }
 .social-icons a {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-icons a:hover {
-  filter: brightness(80%);
-  transform: translateY(-2px);
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; text-decoration: none; transition: 0.3s;
 }
 
 .fb { background-color: #1877F2; }
-.tw { background-color: #1DA1F2; }
 .yt { background-color: #FF0000; }
 .tk { background-color: #000000; }
 .ig { background-color: #E4405F; }
 
-/* RESPONSIVE QUERIES */
-@media (max-width: 1024px) {
-  .hero {
-    align-items: center;
-  }
+@media (max-width: 900px) {
+  .programs-container { grid-template-columns: 1fr; gap: 3rem; }
+  .programs-image { order: -1; }
+}
+/* Container for the tooltip */
+.tooltip-btn {
+  position: relative;
 }
 
-@media (max-width: 768px) {
-  .feedback-container {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem;
-  }
+/* Creating the tooltip box */
+.tooltip-btn:hover::after {
+  content: attr(data-desc); 
+  position: absolute;
+  top: 135%; /* Positions it clearly below the button */
+  left: 50%;
+  transform: translateX(-50%);
   
-  .feedback-image {
-    order: -1;
-  }
+  /* White background with Blue/Mint outline */
+  background-color: #ffffff; 
+  border: 2px solid #A7EFF1; 
+  color: #5A6D65; /* Darker text for readability */
+  
+  /* Styling */
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
 }
 
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-
-  .hero {
-    padding: 1.5rem;
-    min-height: 80vh;
-  }
-
-  .mission-card {
-    padding: 1.5rem;
-  }
-
-  .footer-container {
-    flex-direction: column;
-  }
+/* The small triangle pointing up */
+.tooltip-btn:hover::before {
+  content: "";
+  position: absolute;
+  top: 115%; 
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-bottom-color: #A7EFF1; /* Match the blue outline */
+  z-index: 100;
 }
