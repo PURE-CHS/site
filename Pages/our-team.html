@@ -3,43 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Jason Nguyen">
+  <meta name="contact" content="jasonnugget09@gmail.com">
   <title>PurePatients - Our Team</title>
   <link rel="stylesheet" href="../Style/style.css">
 </head>
 <body>
 
   <header>
-    <a href="../index.html" style="text-decoration: none;">
-        <div class="logo">PURE</div>    
+    <div class="logo-container">
+      <a href="../index.html" style="text-decoration: none;">
+        <div class="logo">PURE</div>
+      </a>
+    </div>
+
     <nav>
       <a href="../index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="get-involved.html">Get Involved</a>
-      <a href="impact.html">Impact</a>
       <a href="our-team.html">Our Team</a>
       <a href="contact.html">Contact</a>
     </nav>
+
     <a href="#" class="donate-btn">DONATE</a>
   </header>
 
-  <main class="team-main">
-    <h1>Meet Our Team</h1>
-    <p>PurePatients is driven by a passionate group of students dedicated to making a difference.</p>
+  <main class="team-main" style="max-width: 1000px; margin: 4rem auto; padding: 0 1.5rem; text-align: center;">
+    <h1 style="color:#A7EFF1; font-size: 2.5rem; margin-bottom: 1rem;">Meet Our Team</h1>
+    <p style="color: #666; max-width: 600px; margin: 0 auto 3rem;">
+      PurePatients is driven by a passionate group of students dedicated to making a difference. 
+      Meet the people who make our mission possible.
+    </p>
 
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar" style="background: #BDC8C1;">QA</div>
-        <h2>Quynh Anh</h2>
-        <p class="team-role">Leadership</p>
-        <p>Directs organization strategy and community outreach programs.</p>
+    <div class="team-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+      
+      <div class="team-card" style="background: #fff; padding: 2rem; border-radius: 15px; border: 1px solid #eee; min-width: 280px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <div class="team-avatar" style="width: 70px; height: 70px; background: #BDC8C1; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">QA</div>
+        <h2 style="color: #333; margin-bottom: 0.5rem;">Quynh Anh</h2>
+        <p class="team-role" style="color: #A7EFF1; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Leadership</p>
+        <p style="font-size: 0.9rem; color: #777; margin-top: 1rem;">Directs organization strategy and community outreach programs.</p>
       </div>
 
-      <div class="team-card featured">
-        <div class="team-avatar" style="background: #A7EFF1;">JN</div>
-        <h2>Jason Nguyen</h2>
-        <p class="team-role">Web Development</p>
-        <p>Lead developer responsible for building and maintaining the digital platform.</p>
+      <div class="team-card featured" style="background: #fff; padding: 2rem; border-radius: 15px; border: 2px solid #E2F6FF; min-width: 280px; flex: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <div class="team-avatar" style="width: 70px; height: 70px; background: #A7EFF1; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JN</div>
+        <h2 style="color: #333; margin-bottom: 0.5rem;">Jason Nguyen</h2>
+        <p class="team-role" style="color: #5A6D65; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Web Development</p>
+        <p style="font-size: 0.9rem; color: #777; margin-top: 1rem;">Lead developer responsible for building and maintaining the PurePatients digital platform.</p>
       </div>
+
     </div>
   </main>
 
